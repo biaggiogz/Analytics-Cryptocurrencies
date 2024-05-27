@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  testlambda
+
+  Sample SAM Template for testlambda
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 20
+    MemorySize: 512
+
+Resources:
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: target/data-0.0.1-SNAPSHOT-aws.jar
+      Handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker
+      Runtime: java17
+      Role: 'arn:aws:iam::248364788596:role/RoleLambdaCustomv1'
+      FunctionName: SpringBootv1Lambda
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambda_ReadOnlyAccess
+        - AWSXrayWriteOnlyAccess
+        - AWSLambdaVPCAccessExecutionRole
+        - AmazonS3FullAcces
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Events:
+        MyEvent:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0/10 * * * ? *)
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+          # ID: AKIATTU5R5N2HPB6TFCI
+        #  KEY: 4j8nPLhtVnBXzrZMYSFQ4vU+mIlpV5Uyp9vUar+T
+
+
+

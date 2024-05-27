@@ -1,0 +1,82 @@
+package com.etlv1.data;
+;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+
+
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+
+public class S3Service {
+
+
+
+
+
+
+    /*public byte[] getObjectBytes(String bucketName, String keyName) {
+
+        S3Client s3 = getClient();
+
+        try {
+
+            GetObjectRequest objectRequest = GetObjectRequest
+                    .builder()
+                    .key(keyName)
+                    .bucket(bucketName)
+                    .build();
+
+            // Return the byte[] from this object.
+            ResponseBytes<GetObjectResponse> objectBytes = s3.getObjectAsBytes(objectRequest);
+            return objectBytes.asByteArray();
+
+        } catch (S3Exception e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
+        }
+        return null;
+    }
+
+    // Returns the names of all images in the given bucket.
+   public void listBucketObjects() {
+
+      /*  AmazonS3 s3 = getClient();
+        String keyName;
+
+        List<String> keys = new ArrayList<>();
+        List<Bucket> buckets = s3.listBuckets();
+
+
+
+        System.out.println("Buckets:");
+        for (Bucket bucket : buckets) {
+            System.out.println(bucket.toString());
+        }
+    }
+
+    public PutObjectRequest putobject() throws IOException {
+        Path tempFilePath = Files.createTempFile("example", ".txt");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        // Format the date and time using a DateTimeFormatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedDateTime = currentDateTime.format(formatter);
+        // Write content to the file
+        String fileContent = "Hello, this is a test file!";
+        Files.write(tempFilePath, fileContent.getBytes(), StandardOpenOption.WRITE);
+
+        File file = tempFilePath.toFile();
+
+
+        PutObjectRequest request = new PutObjectRequest("s3-raw-data-drypto","test"+formattedDateTime,file);
+        return request ;
+
+
+   }*/
+}
